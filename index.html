@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            margin-top: 50px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        input, button {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="loginPage">
+        <h2>Hotel Management Login</h2>
+        <input type="text" id="username" placeholder="Enter Username">
+        <input type="password" id="password" placeholder="Enter Password">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <div class="container" id="dashboard" style="display: none;">
+        <h2>Welcome to Hotel Management Dashboard</h2>
+        <p>Book a room below:</p>
+        <input type="text" id="roomNumber" placeholder="Enter Room Number">
+        <button onclick="bookRoom()">Book Room</button>
+        <p id="bookingStatus"></p>
+    </div>
+
+    <script>
+        function login() {
+            let user = document.getElementById('username').value;
+            let pass = document.getElementById('password').value;
+            if (user === "admin" && pass === "1234") {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+            } else {
+                alert("Invalid Credentials");
+            }
+        }
+
+        function bookRoom() {
+            let room = document.getElementById('roomNumber').value;
+            if (room) {
+                document.getElementById('bookingStatus').innerText = "Room " + room + " booked successfully!";
+            } else {
+                alert("Please enter a room number.");
+            }
+        }
+    </script>
+</body>
+</html>
